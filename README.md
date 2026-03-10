@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="images/bloated-shelf.png" alt="Bloated Shelf" width="480" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/bloated-shelf-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="images/bloated-shelf.png" />
+    <img src="images/bloated-shelf.png" alt="Bloated Shelf" width="480" />
+  </picture>
 </p>
 
 <h1 align="center">Bloated Shelf</h1>
