@@ -1,0 +1,16 @@
+INSERT INTO genre (name) VALUES
+    ('Science Fiction'),
+    ('Fantasy'),
+    ('Mystery'),
+    ('Thriller'),
+    ('Romance'),
+    ('Historical Fiction'),
+    ('Horror'),
+    ('Literary Fiction'),
+    ('Biography'),
+    ('History'),
+    ('Science'),
+    ('Philosophy'),
+    ('Self-Help'),
+    ('Poetry'),
+    ('True Crime');
