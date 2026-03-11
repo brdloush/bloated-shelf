@@ -1,5 +1,13 @@
 # Bloated Shelf — Implementation Plan
 
+## Backlog
+
+### Upgrade to Spring Boot 4 / Hibernate 7
+- [x] Bump parent POM from `spring-boot-starter-parent 3.4.3` to `4.x` (once GA).
+- [x] Verify Hibernate version resolves to 7.x and all tests pass.
+- [x] Fix README badges and tech stack table (`Spring Boot 4.0.1`, `Hibernate 7.2.x`) which currently reflect the intended target, not the actual versions.
+- **Why:** The README was written describing the intended target stack. The `hot-queries` implementation also needs to be validated against Hibernate 7 internals once this upgrade is done.
+
 This document outlines the step-by-step implementation tasks for the Bloated Shelf project. Each task is sized to be manageable, testable, and comes with specific acceptance criteria that must be met before proceeding to the next.
 
 ## Phase 1: Project Skeleton & Database Foundation
