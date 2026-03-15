@@ -1,6 +1,7 @@
 package com.example.bloatedshelf.domain;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -44,6 +45,12 @@ public class Book {
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
     private List<LoanRecord> loanRecords = new ArrayList<>();
 
+    @Column(nullable = false)
+    private boolean archived = false;
+
+    @Column
+    private LocalDateTime archivedAt;
+
     public Book() {}
 
     public Long getId() { return id; }
@@ -64,4 +71,8 @@ public class Book {
     public void setReviews(List<Review> reviews) { this.reviews = reviews; }
     public List<LoanRecord> getLoanRecords() { return loanRecords; }
     public void setLoanRecords(List<LoanRecord> loanRecords) { this.loanRecords = loanRecords; }
+    public boolean isArchived() { return archived; }
+    public void setArchived(boolean archived) { this.archived = archived; }
+    public LocalDateTime getArchivedAt() { return archivedAt; }
+    public void setArchivedAt(LocalDateTime archivedAt) { this.archivedAt = archivedAt; }
 }

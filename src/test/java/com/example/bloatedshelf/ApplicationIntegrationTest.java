@@ -15,6 +15,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -121,5 +122,26 @@ class ApplicationIntegrationTest {
     void unauthenticatedRequestReturns401() throws Exception {
         mockMvc.perform(get("/api/books"))
                 .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @WithMockUser(username = "admin", roles = {"ADMIN", "LIBRARIAN", "MEMBER", "VIEWER"})
+    void adminCanArchiveBook() throws Exception {
+        mockMvc.perform(put("/api/admin/books/1/archive"))
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    @WithMockUser(username = "member1", roles = {"MEMBER", "VIEWER"})
+    void memberCannotArchiveBook() throws Exception {
+        mockMvc.perform(put("/api/admin/books/1/archive"))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @WithMockUser(username = "admin", roles = {"ADMIN", "LIBRARIAN", "MEMBER", "VIEWER"})
+    void archiveNonExistentBookReturns404() throws Exception {
+        mockMvc.perform(put("/api/admin/books/99999/archive"))
+                .andExpect(status().isNotFound());
     }
 }

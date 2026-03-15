@@ -5,9 +5,11 @@ import com.example.bloatedshelf.dto.BookDetailDto;
 import com.example.bloatedshelf.dto.BookWithReviewsDto;
 import com.example.bloatedshelf.dto.ReviewDto;
 import com.example.bloatedshelf.repository.BookRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -51,6 +53,15 @@ public class BookService {
         return book.getReviews().stream()
                 .map(ReviewDto::from) // Triggers loading of member for each review
                 .toList();
+    }
+
+    @Transactional
+    public void archiveBook(Long id) {
+        Book book = bookRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Book not found: " + id));
+        book.setArchived(true);
+        book.setArchivedAt(LocalDateTime.now());
+        bookRepository.save(book);
     }
 
     // N+1 DEMO:
