@@ -1,0 +1,84 @@
+### Books — List all books
+# Requires: ROLE_MEMBER (member1 / member123)
+GET http://localhost:8080/api/books
+Authorization: Basic bWVtYmVyMTptZW1iZXIxMjM=
+
+###
+
+### Books — Get book by ID
+# Requires: ROLE_MEMBER (member1 / member123)
+GET http://localhost:8080/api/books/50
+Authorization: Basic bWVtYmVyMTptZW1iZXIxMjM=
+
+###
+
+### Books — Get reviews for a book
+# Requires: ROLE_MEMBER (member1 / member123)
+GET http://localhost:8080/api/books/50/reviews
+Authorization: Basic bWVtYmVyMTptZW1iZXIxMjM=
+
+###
+
+### Books — Get books by genre
+# genreId=1 → Science Fiction
+# Requires: ROLE_MEMBER (member1 / member123)
+GET http://localhost:8080/api/books/by-genre/1
+Authorization: Basic bWVtYmVyMTptZW1iZXIxMjM=
+
+###
+
+### Authors — List all authors
+# Requires: ROLE_VIEWER (readonly / read123)
+GET http://localhost:8080/api/authors
+Authorization: Basic cmVhZG9ubHk6cmVhZDEyMw==
+
+###
+
+### Authors — Get author by ID
+# Requires: ROLE_VIEWER (readonly / read123)
+GET http://localhost:8080/api/authors/50
+Authorization: Basic cmVhZG9ubHk6cmVhZDEyMw==
+
+###
+
+### Authors — Get books by author
+# Requires: ROLE_VIEWER (readonly / read123)
+GET http://localhost:8080/api/authors/50/books
+Authorization: Basic cmVhZG9ubHk6cmVhZDEyMw==
+
+###
+
+### Members — List all members
+# Requires: ROLE_LIBRARIAN (librarian / lib123)
+GET http://localhost:8080/api/members
+Authorization: Basic bGlicmFyaWFuOmxpYjEyMw==
+
+###
+
+### Members — Get member by ID
+# Requires: ROLE_LIBRARIAN (librarian / lib123)
+GET http://localhost:8080/api/members/50
+Authorization: Basic bGlicmFyaWFuOmxpYjEyMw==
+
+###
+
+### Members — Get active loans for a member
+# Requires: ROLE_LIBRARIAN (librarian / lib123)
+GET http://localhost:8080/api/members/50/active-loans
+Authorization: Basic bGlicmFyaWFuOmxpYjEyMw==
+
+###
+
+### Admin — Get library statistics
+# Requires: ROLE_ADMIN (admin / admin123)
+GET http://localhost:8080/api/admin/stats
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+###
+
+### Admin — Get most loaned books
+# Requires: ROLE_ADMIN (admin / admin123)
+GET http://localhost:8080/api/admin/most-loaned
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+###
